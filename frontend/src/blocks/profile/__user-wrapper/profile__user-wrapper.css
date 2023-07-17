@@ -1,0 +1,17 @@
+.profile__user-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    ". profile__name profile__edit-button"
+    ". profile__job .";
+  margin: 24px auto 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .profile__user-wrapper {
+    margin: 0;
+    margin-right: auto;
+    grid-template-columns: 30px 5fr 1fr;
+  }
+}

@@ -1,0 +1,6 @@
+.grid-card__caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 15px 17px 21px;
+}

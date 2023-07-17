@@ -1,0 +1,18 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  color: #FFFFFF;
+  font-family: 'Inter', 'Arial', sans-serif;
+  text-align: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .profile {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 200px;
+    margin-bottom: 47px;
+  }
+}
