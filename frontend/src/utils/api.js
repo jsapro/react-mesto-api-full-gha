@@ -21,7 +21,7 @@ class Api {
   }
 
   getInitialCards() {
-    return this._request(`cards`);
+    return this._request(`cards/`);
   }
 
   deleteCard(id) {
@@ -87,7 +87,7 @@ class Api {
 const api = new Api({
   baseUrl: "http://localhost:3000",
   headers: {
-    authorization: "7b039d36-24df-4fc5-8845-0a44a0767175",
+    authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "Content-Type": "application/json",
   },
 });

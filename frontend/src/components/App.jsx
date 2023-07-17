@@ -39,8 +39,9 @@ function App() {
     if (isLoggedIn) {
       Promise.all([api.getUserInfoFromServer(), api.getInitialCards()])
         .then(([userData, initialCards]) => {
+          console.log(initialCards.cards);
           setCurrentUser(userData);
-          setCards(initialCards);
+          setCards(initialCards.cards);
         })
         .catch((e) => console.log(`ошибка-Promise.all: ${e}`));
     }
@@ -171,7 +172,7 @@ function App() {
   const handleRegisterSubmit = (formValue) => {
     auth
       .register(formValue)
-      .then(({ data }) => {
+      .then(( data ) => {
         if (data?.email) {
           setUserData(data);
           setIsInfoTooltipOpen(true);
@@ -195,9 +196,10 @@ function App() {
   const handleLoginSubmit = (formValue) => {
     auth
       .authorize(formValue)
-      .then((data) => {
-        if (data?.token) {
-          localStorage.setItem("jwt", data.token);
+      .then(({token}) => {
+        if (token) {
+          console.log(7777777777, token);
+          localStorage.setItem("jwt", token);
           setUserData(formValue);
           setIsLoggedIn(true);
           navigate("/", { replace: true });

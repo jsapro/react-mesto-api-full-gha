@@ -50,7 +50,7 @@ export const checkToken = (jwt) => {
     },
   })
     .then((res) => checkResponce(res))
-    .then(({data}) => {
+    .then((data) => {
       return data;
     })
 };
