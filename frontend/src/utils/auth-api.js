@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://158.160.19.48:3000";
 
 const checkResponce = (res) => {
   if (res.ok) {
