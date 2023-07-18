@@ -1,0 +1,13 @@
+.grid-card__delete {
+  background-image: url(../../../images/grid-card-thrash.svg);
+  position: absolute;
+  width: 18px;
+  height: 19px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  right: 13px;
+  top: 18px;
+}

@@ -1,0 +1,9 @@
+.auth__input_email {
+    margin-top: 47px;
+    padding-bottom: 9px;
+}
+
+.auth__input_email::placeholder {
+    font-weight: 400;
+    color: #CCCCCC;
+}
