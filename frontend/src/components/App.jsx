@@ -137,8 +137,8 @@ function App() {
     setIsLoading(true);
     api
       .setUserInfo({ name, about })
-      .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+      .then(({user}) => {
+        setCurrentUser(user);
         closeAllPopups();
       })
       .catch((e) => console.log(`Ошибка: ${e}`))
@@ -149,8 +149,8 @@ function App() {
     setIsLoading(true);
     api
       .setUserAvatar({ avatar })
-      .then((updatedUser) => {
-        setCurrentUser(updatedUser);
+      .then(({user}) => {
+        setCurrentUser(user);
         closeAllPopups();
       })
       .catch((e) => console.log(`Ошибка: ${e}`))
