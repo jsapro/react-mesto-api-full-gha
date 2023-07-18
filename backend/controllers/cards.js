@@ -6,7 +6,7 @@ const ForbiddenErr = require('../utils/errors/ForbiddenErr');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
-    .populate('owner')
+    // .populate('owner')
     .then((cards) => res.send({ cards }))
     .catch(next);
 };
@@ -55,7 +55,7 @@ module.exports.likeCard = (req, res, next) => {
     // eslint-disable-next-line comma-dangle
     { new: true }
   )
-    .populate('owner')
+    // .populate('owner')
     .then((card) => {
       if (card) {
         return res.send({ card });
@@ -81,7 +81,7 @@ module.exports.dislikeCard = (req, res, next) => {
     // eslint-disable-next-line comma-dangle
     { new: true }
   )
-    .populate('owner')
+    // .populate('owner')
     .then((card) => {
       if (card) {
         return res.send({ card });
