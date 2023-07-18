@@ -1,7 +1,7 @@
-import React, { useRef, useState, useContext } from "react";
-import PopupWithForm from "./PopupWithForm";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { useEffect } from "react";
+import React, { useRef, useState, useContext } from 'react';
+import PopupWithForm from './PopupWithForm';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import { useEffect } from 'react';
 
 export default function EditAvatarPopup({
   isOpen,
@@ -9,7 +9,7 @@ export default function EditAvatarPopup({
   onUpdateAvatar,
   isLoading,
 }) {
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState('');
 
   const avatarInputRef = useRef();
 
@@ -22,7 +22,7 @@ export default function EditAvatarPopup({
   }, [currentUser]);
 
   useEffect(() => {
-    avatarInputRef.current.value = "";
+    avatarInputRef.current.value = '';
   }, [isOpen]);
 
   function handleSubmit(e) {
@@ -34,23 +34,23 @@ export default function EditAvatarPopup({
 
   return (
     <PopupWithForm
-      name="avatar-update"
-      title="Обновить аватар"
+      name='avatar-update'
+      title='Обновить аватар'
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText={isLoading ? "Сохранение..." : ""}
+      buttonText={isLoading ? 'Сохранение...' : ''}
     >
       <input
-        id="avatar-url-input"
-        className="popup__input popup__input_type_avatar-url"
-        type="url"
-        placeholder="Ссылка на аватар"
-        name="avatarUrl"
+        id='avatar-url-input'
+        className='popup__input popup__input_type_avatar-url'
+        type='url'
+        placeholder='Ссылка на аватар'
+        name='avatarUrl'
         ref={avatarInputRef}
         required
       ></input>
-      <span className="popup__input-error avatar-url-input-error"></span>
+      <span className='popup__input-error avatar-url-input-error'></span>
     </PopupWithForm>
   );
 }

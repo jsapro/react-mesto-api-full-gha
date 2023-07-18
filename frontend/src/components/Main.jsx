@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import Card from "./Card";
-import api from "../utils/api";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useState, useEffect, useContext } from 'react';
+import Card from './Card';
+import api from '../utils/api';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function Main({
   onEditProfile,
@@ -16,32 +16,32 @@ export default function Main({
 
   return (
     <main>
-      <section className="profile" aria-label="редактор профиля">
+      <section className='profile' aria-label='редактор профиля'>
         <button
-          type="button"
-          className="profile__avatar-button"
+          type='button'
+          className='profile__avatar-button'
           onClick={onEditAvatar}
         >
-          <img className="profile__photo" src={avatar} alt="Аватар проофиля" />
+          <img className='profile__photo' src={avatar} alt='Аватар проофиля' />
         </button>
-        <div className="profile__user-wrapper">
-          <h1 className="profile__name">{name}</h1>
+        <div className='profile__user-wrapper'>
+          <h1 className='profile__name'>{name}</h1>
           <button
-            className="profile__edit-button"
-            type="button"
+            className='profile__edit-button'
+            type='button'
             onClick={onEditProfile}
           ></button>
-          <p className="profile__job">{about}</p>
+          <p className='profile__job'>{about}</p>
         </div>
         <button
-          className="profile__add-button"
-          type="button"
+          className='profile__add-button'
+          type='button'
           onClick={onAddPlace}
         ></button>
       </section>
 
-      <section className="grid-cards" aria-label="фотокарточки">
-        <ul className="grid-cards__container">
+      <section className='grid-cards' aria-label='фотокарточки'>
+        <ul className='grid-cards__container'>
           {cards.map((card) => (
             <Card
               card={card}

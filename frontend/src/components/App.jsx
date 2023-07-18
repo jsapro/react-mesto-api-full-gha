@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import Header from "./Header";
-import Main from "./Main";
-import Register from "./Register";
-import Login from "./Login";
-import ProtectedRouteElement from "./ProtectedRoute";
-import ImagePopup from "./ImagePopup";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
-import AddPlacePopup from "./AddPlacePopup";
-import PopupWithSubmit from "./PopupWithSubmit";
-import InfoTooltip from "./InfoTooltip";
-import Footer from "./Footer";
-import authSuccessImg from "../images/auth-success.png";
-import authFailImg from "../images/auth-fail.png";
-import api from "../utils/api";
-import * as auth from "../utils/auth-api.js";
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import Header from './Header';
+import Main from './Main';
+import Register from './Register';
+import Login from './Login';
+import ProtectedRouteElement from './ProtectedRoute';
+import ImagePopup from './ImagePopup';
+import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
+import PopupWithSubmit from './PopupWithSubmit';
+import InfoTooltip from './InfoTooltip';
+import Footer from './Footer';
+import authSuccessImg from '../images/auth-success.png';
+import authFailImg from '../images/auth-fail.png';
+import api from '../utils/api';
+import * as auth from '../utils/auth-api.js';
 
 function App() {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -28,10 +28,10 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isSubmitPopupOpen, setIsSubmitPopupOpen] = useState(false);
-  const [cardIdToDelete, setCardIdToDelete] = useState("");
+  const [cardIdToDelete, setCardIdToDelete] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userData, setUserData] = useState({});
-  const [userPassword, setUserPassword] = useState("");
+  const [userPassword, setUserPassword] = useState('');
   const [authResultPopupData, setAuthResultPopupData] = useState({});
   const navigate = useNavigate();
 
@@ -51,15 +51,15 @@ function App() {
   }, []);
 
   const handleTokenCheck = () => {
-    if (localStorage.getItem("jwt")) {
-      const jwt = localStorage.getItem("jwt");
+    if (localStorage.getItem('jwt')) {
+      const jwt = localStorage.getItem('jwt');
       auth
         .checkToken(jwt)
         .then((data) => {
           if (data?.email) {
             setUserData(data);
             setIsLoggedIn(true);
-            navigate("/", { replace: true });
+            navigate('/', { replace: true });
           }
         })
         .catch((err) => console.log(err));
@@ -136,7 +136,7 @@ function App() {
     setIsLoading(true);
     api
       .setUserInfo({ name, about })
-      .then(({user}) => {
+      .then(({ user }) => {
         setCurrentUser(user);
         closeAllPopups();
       })
@@ -148,7 +148,7 @@ function App() {
     setIsLoading(true);
     api
       .setUserAvatar({ avatar })
-      .then(({user}) => {
+      .then(({ user }) => {
         setCurrentUser(user);
         closeAllPopups();
       })
@@ -171,21 +171,21 @@ function App() {
   const handleRegisterSubmit = (formValue) => {
     auth
       .register(formValue)
-      .then(( data ) => {
+      .then((data) => {
         if (data?.email) {
           setUserData(data);
           setIsInfoTooltipOpen(true);
           setAuthResultPopupData({
-            text: "Вы успешно зарегистрировались!",
+            text: 'Вы успешно зарегистрировались!',
             img: authSuccessImg,
           });
-          navigate("/sign-in", { replace: true });
+          navigate('/sign-in', { replace: true });
         }
       })
       .catch((err) => {
         setIsInfoTooltipOpen(true);
         setAuthResultPopupData({
-          text: "Что-то пошло не так! Попробуйте ещё раз.",
+          text: 'Что-то пошло не так! Попробуйте ещё раз.',
           img: authFailImg,
         });
         console.log(err);
@@ -195,18 +195,18 @@ function App() {
   const handleLoginSubmit = (formValue) => {
     auth
       .authorize(formValue)
-      .then(({token}) => {
+      .then(({ token }) => {
         if (token) {
-          localStorage.setItem("jwt", token);
+          localStorage.setItem('jwt', token);
           setUserData(formValue);
           setIsLoggedIn(true);
-          navigate("/", { replace: true });
+          navigate('/', { replace: true });
         }
       })
       .catch((err) => {
         setIsInfoTooltipOpen(true);
         setAuthResultPopupData({
-          text: "Что-то пошло не так! Попробуйте ещё раз.",
+          text: 'Что-то пошло не так! Попробуйте ещё раз.',
           img: authFailImg,
         });
         console.log(err);
@@ -215,13 +215,13 @@ function App() {
 
   const handleSignOut = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem("jwt");
-    navigate("/sign-in", { replace: true });
+    localStorage.removeItem('jwt');
+    navigate('/sign-in', { replace: true });
   };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
+      <div className='page'>
         <Header
           userData={userData}
           loggedIn={isLoggedIn}
@@ -229,7 +229,7 @@ function App() {
         />
         <Routes>
           <Route
-            path="/sign-up"
+            path='/sign-up'
             element={
               <Register
                 onSubmit={handleRegisterSubmit}
@@ -239,7 +239,7 @@ function App() {
             }
           />
           <Route
-            path="/sign-in"
+            path='/sign-in'
             element={
               <Login
                 onSubmit={handleLoginSubmit}
@@ -249,7 +249,7 @@ function App() {
             }
           />
           <Route
-            path="/"
+            path='/'
             element={
               <ProtectedRouteElement
                 onEditProfile={handleEditProfileClick}
@@ -264,7 +264,7 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<Navigate to="/sign-in" />} />
+          <Route path='*' element={<Navigate to='/sign-in' />} />
         </Routes>
 
         {/*<!-- Попап редактирования профиля --> */}

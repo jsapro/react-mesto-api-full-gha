@@ -1,5 +1,5 @@
-import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
 
 export default function PopupWithSubmit({
   isLoading,
@@ -15,9 +15,9 @@ export default function PopupWithSubmit({
 
   return (
     <PopupWithForm
-      name="delete-card"
-      title="Вы уверены?"
-      buttonText={isLoading ? "Удаление..." : "Да"}
+      name='delete-card'
+      title='Вы уверены?'
+      buttonText={isLoading ? 'Удаление...' : 'Да'}
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
