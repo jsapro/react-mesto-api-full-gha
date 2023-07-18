@@ -1,22 +1,24 @@
-const allowedCors = [
-  'http://localhost:3001',
-  'https://localhost:3001',
-  'http://158.160.19.48:3001',
-  'http://158.160.19.48:3001',
-];
+// const allowedCors = [
+//   'http://localhost:3001',
+//   'https://localhost:3001',
+//   'http://158.160.19.48:3001',
+//   'https://158.160.19.48:3001',
+// ];
 
 module.exports = (req, res, next) => {
-  const { origin } = req.headers; // origin - источник запроса
+  // const { origin } = req.headers; // origin - источник запроса
   const { method } = req;
   const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
   // сохраняем список заголовков исходного запроса
   const requestHeaders = req.headers['access-control-request-headers'];
+  // сохраняем список заголовков исходного запроса
 
-  if (allowedCors.includes(origin)) {
-    // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
-    res.header('Access-Control-Allow-Origin', origin);
-    // res.header('Access-Control-Allow-Origin', '*'); // разрешает браузеру запросы из любого источ
-  }
+  res.header('Access-Control-Allow-Origin', '*'); // разрешает браузеру запросы из любого источ
+
+  // if (allowedCors.includes(origin)) {
+  //   // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
+  //   res.header('Access-Control-Allow-Origin', origin);
+  // }
 
   // Если это предварительный запрос, добавляем нужные заголовки
   if (method === 'OPTIONS') {
