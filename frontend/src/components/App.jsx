@@ -39,9 +39,8 @@ function App() {
     if (isLoggedIn) {
       Promise.all([api.getUserInfoFromServer(), api.getInitialCards()])
         .then(([userData, initialCards]) => {
-          console.log(initialCards.cards);
           setCurrentUser(userData);
-          setCards(initialCards.cards);
+          setCards(initialCards.cards.reverse());
         })
         .catch((e) => console.log(`ошибка-Promise.all: ${e}`));
     }
@@ -198,7 +197,6 @@ function App() {
       .authorize(formValue)
       .then(({token}) => {
         if (token) {
-          console.log(7777777777, token);
           localStorage.setItem("jwt", token);
           setUserData(formValue);
           setIsLoggedIn(true);

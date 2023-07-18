@@ -6,6 +6,7 @@ const ForbiddenErr = require('../utils/errors/ForbiddenErr');
 
 module.exports.getCards = (req, res, next) => {
   Card.find({})
+    .populate('owner')
     .then((cards) => res.send({ cards }))
     .catch(next);
 };
@@ -22,7 +23,7 @@ module.exports.deleteCard = (req, res, next) => {
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
         return new BadRequestErr(
-          'Переданы некорректные данные для получения карточки',
+          'Переданы некорректные данные для получения карточки'
         );
       }
       return next(err);
@@ -39,8 +40,8 @@ module.exports.createCard = (req, res, next) => {
       if (err instanceof mongoose.Error.ValidationError) {
         return next(
           new BadRequestErr(
-            'Переданы некорректные данные при создании карточки',
-          ),
+            'Переданы некорректные данные при создании карточки'
+          )
         );
       }
       return next(err);
@@ -65,8 +66,8 @@ module.exports.likeCard = (req, res, next) => {
       if (err instanceof mongoose.Error.CastError) {
         return next(
           new BadRequestErr(
-            'Переданы некорректные данные для постановки/снятии лайка',
-          ),
+            'Переданы некорректные данные для постановки/снятии лайка'
+          )
         );
       }
       return next(err);
@@ -80,6 +81,7 @@ module.exports.dislikeCard = (req, res, next) => {
     // eslint-disable-next-line comma-dangle
     { new: true }
   )
+    .populate('owner')
     .then((card) => {
       if (card) {
         return res.send({ card });
@@ -90,8 +92,8 @@ module.exports.dislikeCard = (req, res, next) => {
       if (err instanceof mongoose.Error.CastError) {
         return next(
           new BadRequestErr(
-            'Переданы некорректные данные для постановки/снятии лайка',
-          ),
+            'Переданы некорректные данные для постановки/снятии лайка'
+          )
         );
       }
       return next(err);
