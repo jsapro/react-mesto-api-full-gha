@@ -1,4 +1,9 @@
-const allowedCors = ['http://localhost:3001', 'https://localhost:3001'];
+const allowedCors = [
+  'http://localhost:3001',
+  'https://localhost:3001',
+  'http://158.160.19.48:3001',
+  'http://158.160.19.48:3001',
+];
 
 module.exports = (req, res, next) => {
   const { origin } = req.headers; // origin - источник запроса
