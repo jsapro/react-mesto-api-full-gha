@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.19.48
+IP 158.160.19.48
 
 Frontend https://getlike-jsapro.nomoredomains.xyz
 
