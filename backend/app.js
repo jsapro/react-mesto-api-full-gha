@@ -47,6 +47,13 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 
+// временный код для тестирования
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(router);
 
 app.use(errorLogger);
