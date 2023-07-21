@@ -1,4 +1,4 @@
-const BASE_URL = "http://api.getlike-jsapro.nomoredomains.xyz";
+const BASE_URL = "https://api.getlike-jsapro.nomoredomains.xyz";
 
 const checkResponce = (res) => {
   if (res.ok) {

@@ -85,7 +85,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://api.getlike-jsapro.nomoredomains.xyz",
+  baseUrl: "https://api.getlike-jsapro.nomoredomains.xyz",
   headers: {
     authorization: `Bearer ${localStorage.getItem("jwt")}`,
     "Content-Type": "application/json",
