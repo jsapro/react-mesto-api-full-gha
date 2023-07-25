@@ -36,7 +36,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (localStorage.getItem('jwt')) {
       Promise.all([api.getUserInfoFromServer(), api.getInitialCards()])
         .then(([userData, initialCards]) => {
           setCurrentUser(userData);
@@ -51,8 +51,8 @@ function App() {
   }, []);
 
   const handleTokenCheck = () => {
-    if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
       auth
         .checkToken(jwt)
         .then((data) => {
