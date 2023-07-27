@@ -36,6 +36,10 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    handleTokenCheck();
+  }, []);
+
+  useEffect(() => {
     if (localStorage.getItem('jwt')) {
       Promise.all([api.getUserInfoFromServer(), api.getInitialCards()])
         .then(([userData, initialCards]) => {
@@ -45,10 +49,6 @@ function App() {
         .catch((e) => console.log(`ошибка-Promise.all: ${e}`));
     }
   }, [isLoggedIn]);
-
-  useEffect(() => {
-    handleTokenCheck();
-  }, []);
 
   const handleTokenCheck = () => {
     const jwt = localStorage.getItem('jwt');
