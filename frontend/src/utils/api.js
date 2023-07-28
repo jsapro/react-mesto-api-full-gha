@@ -1,7 +1,7 @@
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
-    this._headers = headers;
+    // this._headers = headers;
   }
 
   _checkResponse(res) {
@@ -12,7 +12,10 @@ class Api {
   }
   _request(endPoint, options = {}) {
     const params = {
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
       ...options,
     };
     return fetch(`${this._baseUrl}/${endPoint}`, params).then(
@@ -27,7 +30,6 @@ class Api {
   deleteCard(id) {
     return this._request(`cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
     });
   }
 
@@ -86,10 +88,6 @@ class Api {
 
 const api = new Api({
   baseUrl: "https://api.getlike-jsapro.nomoredomains.xyz",
-  headers: {
-    authorization: `Bearer ${localStorage.getItem("jwt")}`,
-    "Content-Type": "application/json",
-  },
 });
 
 export default api;
