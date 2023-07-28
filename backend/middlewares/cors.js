@@ -3,6 +3,8 @@ const allowedCors = [
   'https://getlike-jsapro.nomoredomains.xyz',
   'http://158.160.19.48',
   'https://158.160.19.48',
+  'http://localhost:3001',
+  'https://localhost:3001',
 ];
 
 module.exports = (req, res, next) => {

@@ -5,15 +5,16 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
+// const cors = require('cors');
 const { MONGO_URL, PORT = 3000 } = require('./utils/config');
 const router = require('./routes');
 const { finalErrorHandler } = require('./middlewares/finalErrorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 const app = express();
-app.use(cors());
+app.use(cors);
+// app.use(cors());
 
 mongoose
   .connect(MONGO_URL, {
@@ -37,8 +38,6 @@ const limiter = rateLimit({
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-
-// app.use(cors);
 
 app.use(limiter); // Apply the rate limiting middleware to all requests
 app.use(express.json()); // вместо bodyParser
